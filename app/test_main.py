@@ -5,11 +5,12 @@ import pytest
 @pytest.mark.parametrize(
     "password, expected",
     [
-        ("Pass@1Aa8", True),
-        ("Short1@", False),
-        ("NoDigit@Aa", False),
-        ("Has Space1@", False),
-        ("VeryLongPassword1@A", False)
+        ("Pass@word", False),
+        ("password1@", False),
+        ("PASS1@WORD", True),
+        ("Pass word1@", False),
+        ("Pass@1", False),
+        ("Pass@word1word1word", False),
     ]
 )
 def test_check_password(password: str, expected: bool) -> None:
